@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -72,13 +76,33 @@ public class HelloWorld {
         String s4="abc";
         String s5="abc";
         System.out.println(s4);
-
-        System.out.println( s4 == s5 );
-        System.out.println(s4.equals(s5));
+        System.out.println("-------------------字符串比较-----------------------");
+        System.out.println("s2 == s3: " + (s2 == s3));
+        System.out.println("s2.equals(s3): " + s2.equals(s3));
+        System.out.println("s3 == s4: " + (s3 == s4));
+        System.out.println("s3.equals(s4): " + s3.equals(s4));
+        System.out.println("s4 == s5: " + (s4 == s5) );
+        System.out.println("s4.equals(s5): " + s4.equals(s5));
 
         System.out.println("-------------------循环字符串--------------------");
         for (int i =0; i < s5.length(); i++){
             System.out.println(s5.charAt(i));
+            System.out.println(s5.toCharArray()[i]);
         }
+
+        System.out.println("-------------------文件流--------------------");
+        try{
+            File file = new File("C:/Users/Administrator/Documents/996_list-master/README.md");
+            InputStream out = new FileInputStream(file);
+            int size = out.available();
+
+            for (int i = 0; i < size; i++) {
+                System.out.print((char) out.read());
+            }
+        }
+        catch (IOException ex){
+            System.out.println("Exception thrown  :" + ex);
+        }
+
     }
 }
